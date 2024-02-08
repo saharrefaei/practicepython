@@ -1,13 +1,6 @@
-import random
-import string
+lis1=['sahar','aref','samaneh','ali']
+lis2=['maman','baba','samaneh','sahar']
 
-char = (string.ascii_letters+string.ascii_lowercase+string.ascii_uppercase+string.digits)
+mutualName=[name for name in lis1 if name in lis2]
 
-password = ''
-length = int(input ( 'enter the length of your password : '))
-
-for _ in range(length):
-    characters = random.choice(char)
-    password+=characters
-    
-print(f"your password is {password}")
+print(mutualName)
