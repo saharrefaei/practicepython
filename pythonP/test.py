@@ -114,3 +114,15 @@
 #         firstline -= 2
 
 # tree(5)
+
+
+# ------------------------------------------
+
+import sys
+
+stdout = sys.stdout
+
+with open ("C:\\movie\\python\\practice\\pythonP\\contries.cs" , 'a') as X :
+     sys.stdout = X
+     print("the result")
+     stdout = sys.stdout
