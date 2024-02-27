@@ -118,11 +118,21 @@
 
 # ------------------------------------------
 
+# import sys
+
+# stdout = sys.stdout
+
+# with open ("C:\\movie\\python\\practice\\pythonP\\contries.cs" , 'a') as X :
+#      sys.stdout = X
+#      print("the result")
+#      stdout = sys.stdout
+     
+# ------------------------------------------
+
 import sys
 
 stdout = sys.stdout
 
-with open ("C:\\movie\\python\\practice\\pythonP\\contries.cs" , 'a') as X :
-     sys.stdout = X
-     print("the result")
-     stdout = sys.stdout
+with open ("C:\\movie\\python\\practice\\pythonP\\contries.cs" , 'r') as X :
+     print(X.read())
+     
