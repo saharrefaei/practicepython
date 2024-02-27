@@ -1,138 +1,46 @@
-#     Consider a list of words(strings). Write a Python script that generates a list of tuples where the first element of the tuple is the word in the list and the second element is its length.
-
-#     Use list comprehension if possible.
-
-# Sample List: words = ['Python', 'Java', 'C++', 'Golang', 'Solidity', 'Bash']
-
-# Expected Result: [('Python', 6), ('Java', 4), ('C++', 3), ('Golang', 6), ('Solidity', 8), ('Bash', 4)]
-
-# words = ['Python', 'Java', 'C++', 'Golang', 'Solidity', 'Bash']
-# lisch =[(i , len(i)) for i in words]
-# print(lisch)
-
-# ______________________________________________
-
-# Write a Python program that accepts as input a sequence of words separated by one or more whitespaces and prints out the same words with the letters in reversed order. Do not use list comprehension.
-# string = "I love cat and dogs"
-
-# reversedString = list() 
-# reversedString = string.split(" ")
-# rev = list()
-# for items in reversedString :
-#     rev =' '.join(items[::-1])
-#     print(rev)
+import random
 
 
-# ______________________________________________
 
-# Write a Python program that accepts a hyphen-separated sequence of words as input and prints the words in a hyphen-separated sequence after sorting them alphabetically.
+def roll():
+     min_number = 1 
+     max_number = 7
+     random_number = random.randint(min_number,max_number)
+     return random_number
 
-# words = list()
-# words = input("enter the color")
-# wordsList = list()
-# wordsList = words.split("-")
-# print(sorted(wordsList))
+while True:
+     players = int(input("how many players want to play ? (max 4 players) : "))
+     if 1 < players <= 4 :
+          print(f"you selecet {players} players")
+          break
+     else:
+          print(" invalid players number , try again ")
+          
 
-# ______________________________________________
-
-# Write a program that prompts the user for a long string containing multiple words separated by whitespaces and prints back the same string with the words in backward order.
-
-# str = "my name is laxmi"
-# revresestr=str.split(" ")
-# print(revresestr[::-1])
-
-# ______________________________________________
-
-# Write a Python script that finds all numbers that are divisible by 7 but are not a multiple of 5, between 1500 and 3200 (both included).
-# numbers = input("enter").split("-")
-# num=list()
-# for i in numbers :
-#     intnum = int(i)
-#     if intnum % 7 == 0 and intnum % 5 != 0 :
-#        num.append(intnum)
-
-# print(num)
-
-# ______________________________________________
-
-    # Write a Python script that validates an email address by writing "Valid email!" or "Invalid email!".
-
-    # If the email is not valid the script should display why it's not valid.
-
-    # We consider a valid email address if:
-
-    #     it has at least 6 characters but no more than 16.
-
-    #     it contains both . and @
-
-    #     it does not contain any of the following characters:'[]{}()$*'
-# email = list()
-# email = input("enter email addres : ")
-# invalidChar = ["[" , ']' , "*"]
-# emailLength = len(email)
-
-# for char1 in email:
-#     for invalid1 in invalidChar:
-#         if char1 == invalid1 :
-#             print("Invalid character found:", char1)
-#             break
-                 
-#         if emailLength < 6  or emailLength > 16 :
-#             print(" the length of email is incorrect")
-#             break
-        
-#         else : 
-#             print("valid email")
-#             break
-     
-            
-     # ______________________________________________
-# Consider the following 2 Lists: names = ["Dan", "John", "Diana"] and phones = [11111, 2222, 3333].
-
-# Create a set that contains the elements of the 2 lists in pairs.
-   
-# names = ["Dan", "John", "Diana"] 
-# phones = [11111, 2222, 3333]
-
-# newchar =dict(zip(names,phones))
-# print(newchar)
-
-     # ______________________________________________
-# Consider this dictionary. Print a sorted view of the dictionary by the third field of its values, in reverse order.
-
-# employees = {'John': ('London', 4000, 28), 'Maria': ('Zagreb', 3800, 40), 'Diana': ('NYC', 3500, 31)}
-# view = sorted(employees.items() , key=lambda x:x[1] , reverse=True)
-# print(view)
-
-     # ______________________________________________
+max_score = 51
+players_score = [0 for _ in range(players)]
 
 
-# def tree(height):
-#     firstline = height * 2 - 1
-#     while firstline > 0:
-#         print("*" * firstline)
-#         firstline -= 2
-
-# tree(5)
-
-
-# ------------------------------------------
-
-# import sys
-
-# stdout = sys.stdout
-
-# with open ("C:\\movie\\python\\practice\\pythonP\\contries.cs" , 'a') as X :
-#      sys.stdout = X
-#      print("the result")
-#      stdout = sys.stdout
-     
-# ------------------------------------------
-
-import sys
-
-stdout = sys.stdout
-
-with open ("C:\\movie\\python\\practice\\pythonP\\contries.cs" , 'r') as X :
-     print(X.read())
-     
+while max(players_score) < max_score  :
+     for players_index in range(players) :
+          current_score = 0
+          
+          while True : 
+               roll_chance = input(f"do you wanna roll player {players_index + 1} ? (y/n)")
+               if roll_chance.lower() != 'y' :
+                    break
+          
+               score_roll = roll()
+               if score_roll == 1 :
+                    print("ah you rolled 1 , your tern is done")
+                    current_score = 0    
+                    break
+               else :
+                    current_score += score_roll  
+                    print(f'you got {score_roll} point')
+               
+               players_score[players_index] += current_score      
+               print(f'your total score is {current_score} point')
+    
+         
+          print(f'your total score is : {players_score[players_index]} for player {players_index + 1}')
